@@ -1,0 +1,59 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "Check output is validated when there are all good inputs",
+        "description": "",
+        "id": "to-test-traffic-api;check-output-is-validated-when-there-are-all-good-inputs",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 2758275802,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I will send request to URL",
+            "match": {
+              "location": "GetURL.sendingGetQuery()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 2427563,
+              "status": "passed"
+            },
+            "line": 5,
+            "name": "I will check status code equals 200",
+            "match": {
+              "location": "GetURL.checkingResponseStatusCode()"
+            },
+            "keyword": "Then "
+          },
+          {
+            "result": {
+              "duration": 259777582,
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertTrue(Assert.java:52)\r\n\tat GetURL.checkingResponseBody(GetURL.java:40)\r\n\tat ✽.And I will check response is not empty(Feature.feature:6)\r\n",
+              "status": "failed"
+            },
+            "line": 6,
+            "name": "I will check response is not empty",
+            "match": {
+              "location": "GetURL.checkingResponseBody()"
+            },
+            "keyword": "And "
+          }
+        ]
+      }
+    ],
+    "name": "To test Traffic Api",
+    "description": "",
+    "id": "to-test-traffic-api",
+    "keyword": "Feature",
+    "uri": "Feature.feature"
+  }
+]
