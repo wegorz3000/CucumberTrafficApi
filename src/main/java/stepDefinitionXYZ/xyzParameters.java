@@ -1,3 +1,4 @@
+/*
 package stepDefinitionXYZ;
 
 import com.jayway.restassured.response.Response;
@@ -38,5 +39,5 @@ public class xyzParameters {
         Assert.assertTrue(b);
     }
 
-
 }
+*/
