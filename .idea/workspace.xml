@@ -2,26 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="abfe70c0-876b-43c6-8bd4-c19ea4cb7080" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/stepDefinitionXYZ/xyzParameters.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/FeatureXYZ.feature" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/FeatureBaseUrl.feature" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/FeatureJsonOrXml.feature" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/FeatureUrl.feature" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/FeatureXYZ.feature" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/helpers/TestRunner.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/stepDefinitionFullUrl/GetAnotherURL.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/stepDefinitionFullUrl/GetURL.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/stepDefinitionUrlWithoutBaseUrl/BaseUrl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/stepDefinitionXYZ/xyzParameters.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/stepDefinitionXmlOrJson/jsonOrXml.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/helpers/TestRunner.java" afterPath="$PROJECT_DIR$/src/main/java/startTest/TestRunner.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/stepDefinitionFullUrl/GetAnotherURL.java" afterPath="$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetAnotherURL.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/stepDefinitionFullUrl/GetURL.java" afterPath="$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetURL.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/stepDefinitionUrlWithoutBaseUrl/BaseUrl.java" afterPath="$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/baseUrl/BaseUrl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/stepDefinitionXmlOrJson/jsonOrXml.java" afterPath="$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/returnType/jsonOrXml.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/FeatureBaseUrl.feature" afterPath="$PROJECT_DIR$/src/test/java/resources/features/FeatureBaseUrl.feature" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/FeatureJsonOrXml.feature" afterPath="$PROJECT_DIR$/src/test/java/resources/features/FeatureJsonOrXml.feature" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/FeatureUrl.feature" afterPath="$PROJECT_DIR$/src/test/java/resources/features/FeatureUrl.feature" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetAnotherURL.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetURL.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/baseUrl/BaseUrl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/returnType/jsonOrXml.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -188,14 +172,6 @@
               <item name="TrafficApi" type="b2602c69:ProjectViewProjectNode" />
               <item name="TrafficApi" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="startTest" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrafficApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrafficApi" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -204,44 +180,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrafficApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrafficApi" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrafficApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrafficApi" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="steps" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrafficApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrafficApi" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="steps" type="462c0819:PsiDirectoryNode" />
-              <item name="flow" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TrafficApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TrafficApi" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="steps" type="462c0819:PsiDirectoryNode" />
-              <item name="flow" type="462c0819:PsiDirectoryNode" />
-              <item name="entireUrl" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -528,37 +466,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetURL.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/entireUrl/GetURL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="35" column="41" lean-forward="false" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetAnotherURL.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/entireUrl/GetAnotherURL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="36" column="5" lean-forward="false" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/baseUrl/BaseUrl.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/singleValue/baseUrl/BaseUrl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="30" column="5" lean-forward="false" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/returnType/jsonOrXml.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/singleValue/returnType/jsonOrXml.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="37" column="46" lean-forward="false" selection-start-line="37" selection-start-column="46" selection-end-line="37" selection-end-column="46" />
@@ -574,7 +506,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/returnType/jsonOrXml.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/singleValue/returnType/jsonOrXml.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -599,13 +531,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetAnotherURL.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/entireUrl/GetAnotherURL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="31" column="16" lean-forward="false" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -624,23 +554,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetURL.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/entireUrl/GetURL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="23" column="35" lean-forward="false" selection-start-line="22" selection-start-column="6" selection-end-line="23" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/baseUrl/BaseUrl.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/singleValue/baseUrl/BaseUrl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -669,13 +595,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetURL.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/entireUrl/GetURL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="35" lean-forward="false" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -704,13 +628,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetURL.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/entireUrl/GetURL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="5" lean-forward="true" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -739,13 +661,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetURL.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/entireUrl/GetURL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -821,7 +741,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/returnType/jsonOrXml.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/singleValue/returnType/jsonOrXml.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
@@ -829,28 +749,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/singleValue/baseUrl/BaseUrl.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/entireUrl/GetURL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetURL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="340">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/tests/steps/flow/entireUrl/GetAnotherURL.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/entireUrl/GetAnotherURL.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="15" column="13" lean-forward="false" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/steps/v1/flow/singleValue/baseUrl/BaseUrl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
           <folding />
         </state>
       </provider>
