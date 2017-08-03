@@ -1,4 +1,4 @@
-package stepDefinitionXmlOrJson;
+package tests.steps.flow.singleValue.returnType;
 
 import com.jayway.restassured.response.Response;
 import cucumber.api.PendingException;
