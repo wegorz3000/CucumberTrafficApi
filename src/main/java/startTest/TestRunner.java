@@ -9,7 +9,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
      //   format = {"pretty", "json:target/cucumber.json"},
         features = {"src/test/java/resources/features"},
-        glue = {"startTest", "src/test/java/tests/steps/flow/entireUrl"}
+        //glue = {"CommonSteps", "src/test/java/steps/v1/common"}
+        glue = {"src/test/java/steps/v1/common"}
+
 )
 public class TestRunner {
 }
