@@ -1,12 +1,13 @@
 package steps.v1.common;
 
 import com.jayway.restassured.RestAssured;
-import com.jayway.restassured.response.Header;
 import com.jayway.restassured.response.Response;
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 
 import java.util.HashMap;
 import java.util.List;
@@ -24,55 +25,63 @@ public class CommonSteps extends BaseClass {
     StringBuilder requestBuilder = new StringBuilder("");
 
     public Response response;
-   // RequestType requestType;
-    HashMap<String, Header> headers = new HashMap<String, Header>();
-
+    HashMap<String, String> headers = new HashMap<>();
 
     @Given("^I will set request body from template$")
     public void i_will_set_body_request_URL() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-     //   RestAssured.baseURI = baseUrl; //normal will be taken from properties
-       // RestAssured.basePath = path;
+           RestAssured.baseURI = baseUrl; //normal will be taken from properties
+           RestAssured.basePath = path;
 
-        requestBuilder.append(baseUrl+path+type+returnType);
-        requestBuilder.append(z+"/"+x+"/"+y);
-        throw new PendingException();
+        requestBuilder.append(type + returnType);
+        requestBuilder.append(z + "/" + x + "/" + y);
     }
 
 
-    @Given("^I will add request headers$")
-    public void i_will_add_request_headers() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
+//    @And("^I set query parameter is \"([^\"]*)\" and have value \"([^\"]*)\"$")
+//    public void i_set_query_parameter(String queryParameterName, String queryParameterValue) throws Throwable {
+//        // Write code here that turns the phrase above into concrete actions
+//        requestBuilder.append("?" + queryParameterName + "=" + queryParameterValue);
+//    }
 
-        throw new PendingException();
-    }
-
-    @When("^I set query parameter is \"([^\"]*)\" and have value \"([^\"]*)\"$")
+    @And("^I set query parameter is \"([^\"]*)\" and have value \"([^\"]*)\"$")
     public void i_set_query_parameter(String queryParameterName, String queryParameterValue) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        requestBuilder.append("&"+queryParameterName+"="+queryParameterValue);
-        throw new PendingException();
+        requestBuilder.append("?"+queryParameterName+"="+queryParameterValue+"&app_code=F5LQw-YKN02C00SQ3y2TFg");
+// TODO - zle napisane
     }
+
 
     @When("^I set query parameters: (.*)$")
-    public void i_set_query_parameters(List<String> queryParamtererList) throws Throwable {
+    public void i_set_query_parameters(List<String> queryParameterList) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        requestBuilder.append("&");
-        for (String parameter: queryParamtererList){
-            requestBuilder.append(parameter+"+");
+        requestBuilder.append("?");
+        for (String parameter : queryParameterList) {
+            requestBuilder.append(parameter + "&");
         }
-        throw new PendingException();
+        //TODO w tablicy?
+
     }
 
-    @Then("^I will set \"([^\"]*)\" request URL$")
+    @And("^I will add request headers$")
+    public void i_will_add_request_headers() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        RestAssured.given().headers(headers);
+        //TODO - headers - Where are their place? in properties or not?
+    }
+
+
+    @And("^I will set \"([^\"]*)\" request URL$")
     public void i_will_set_request_URL(String expectedRequestType) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         RequestType parsRequestType = RequestType.valueOf(expectedRequestType);
-        switch(parsRequestType){
+        switch (parsRequestType) {
             case GET:
                 response = RestAssured.get(requestBuilder.toString());
+                break;
             case POST:
                 response = RestAssured.post(requestBuilder.toString());
+                break;
             default:
                 throw new PendingException();
         }
@@ -81,56 +90,38 @@ public class CommonSteps extends BaseClass {
     @Then("^I will validate status code is \"([^\"]*)\"$")
     public void i_will_validate_status_code_is(String statusCode) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        if(!(String.valueOf(response.getStatusCode()) == statusCode))
-            throw new PendingException();
+        int stCode = response.getStatusCode();
+        int stIntCode = Integer.parseInt(statusCode);
+        Assert.assertEquals(stCode, stIntCode);
     }
 
     @Then("^I will validate status message is \"([^\"]*)\"$")
     public void i_will_validate_status_message(String message) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        if(!response.getStatusLine().contains(message))
-            throw new PendingException();
+        Assert.assertTrue(response.getStatusLine().contains(message));
     }
 
     @Then("^I will validate body contains \"([^\"]*)\"$")
     public void i_will_validate_body_contains(String word) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         String responseBody = response.body().print();
-        if(!responseBody.contains(word))
-            throw new PendingException();
+        Assert.assertTrue(responseBody.contains(word));
+        throw new PendingException();
     }
 
-    @Then("^I will validate body not contains$")
-    public void i_will_validate_body_not_contains() throws Throwable {
+    @Then("^I will validate body not contains \"([^\"]*)\"$")
+    public void i_will_validate_body_not_contains(String word) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         String bodyResponse = response.body().print();
-        if(!bodyResponse.isEmpty())
-            throw new PendingException();
+        Assert.assertFalse(bodyResponse.contains(word));
     }
 
     @Then("^I will validate response header contains \"([^\"]*)\"$")
     public void i_will_validate_response_header_contains(String responseHeader) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         String headerResponse = response.getHeaders().toString();
-        if (!headerResponse.contains(responseHeader))
-            throw new PendingException();
+        Assert.assertTrue(headerResponse.contains(responseHeader));
     }
-    /*
-    set request URL
-    set request body from template
-    add request header
-    set/add query parameter
-    set/add query parameters
-    send "type" request with url
-    send "type" request
-    validate status code
-    validate status message (okay forbidden)
-    validate body contains
-    validate body not contains
-    validate response header
-
-     */
-
 
     public enum RequestType {
         GET,

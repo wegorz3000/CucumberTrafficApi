@@ -1,0 +1,5 @@
+http://restservicestesting.blogspot.com/2016/10/using-requestspecbuilder-in-rest.html
+http://www.programcreek.com/java-api-examples/index.php?api=com.jayway.restassured.builder.RequestSpecBuilder
+http://www.thinkcode.se/blog/2014/06/30/cucumber-data-tables
+
+http://static.javadoc.io/com.jayway.restassured/rest-assured/1.2.1/com/jayway/restassured/builder/RequestSpecBuilder.html

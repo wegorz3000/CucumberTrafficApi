@@ -1,18 +1,19 @@
 Feature: Test test
 
 Scenario: Check inputs
-Given I will set "get" request
-And I will set request body from template
-And I will add request headers
-When I set query parameter is "app_code" and have value "123asdapksd"
-When I set query parameters
+Given I will set request body from template
+#And I set query parameter is "app_code" and have value "99DtaMYpnxA9pNcmsnbj"
+And I set query parameter is "app_id" and have value "F5LQw-YKN02C00SQ3y2TFg"
+And I will set "GET" request URL
+#And I will add request headers
+#When I set query parameters
 
 
-Then I will validate status code is "200"
-And I will validate status message is "Forbidden"
-And I will validate body contains "word"
-And I will validate body not contains
-And I will validate response header contains "word"
+Then I will validate status code is "401"
+And I will validate status message is "Unauthorized"
+#And I will validate body contains "word"
+And I will validate body not contains "pilkarzyki"
+And I will validate response header contains "Content-Length"
 
 
 #
