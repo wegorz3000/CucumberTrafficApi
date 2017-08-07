@@ -4,13 +4,12 @@ import com.jayway.restassured.RestAssured;
 import com.jayway.restassured.response.Header;
 import com.jayway.restassured.response.Response;
 import cucumber.api.PendingException;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.util.HashMap;
-import java.util.regex.Pattern;
+import java.util.List;
 
 public class CommonSteps extends BaseClass {
 
@@ -25,7 +24,7 @@ public class CommonSteps extends BaseClass {
     StringBuilder requestBuilder = new StringBuilder("");
 
     public Response response;
-    RequestType requestType;
+   // RequestType requestType;
     HashMap<String, Header> headers = new HashMap<String, Header>();
 
 
@@ -40,41 +39,49 @@ public class CommonSteps extends BaseClass {
         throw new PendingException();
     }
 
-    @And("^I will set \"([^\"]*)\" request URL$")
-    public void i_will_set_request_URL(String requestType) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        if (requestType == RequestType.GET.toString()) {
-            response = RestAssured.get(requestBuilder.toString());
-        } else if (requestType == RequestType.POST.toString()) {
-            response = RestAssured.post(requestBuilder.toString());
-        } else {
-            throw new PendingException();
-        }
-    }
 
     @Given("^I will add request headers$")
     public void i_will_add_request_headers() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+
         throw new PendingException();
     }
 
     @When("^I set query parameter is \"([^\"]*)\" and have value \"([^\"]*)\"$")
-    public void i_set_query_parameter(String a1, String a2) throws Throwable {
+    public void i_set_query_parameter(String queryParameterName, String queryParameterValue) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-
+        requestBuilder.append("&"+queryParameterName+"="+queryParameterValue);
         throw new PendingException();
     }
 
-    @When("^I set query parameters$")
-    public void i_set_query_parameters() throws Throwable {
+    @When("^I set query parameters: (.*)$")
+    public void i_set_query_parameters(List<String> queryParamtererList) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        requestBuilder.append("&");
+        for (String parameter: queryParamtererList){
+            requestBuilder.append(parameter+"+");
+        }
         throw new PendingException();
+    }
+
+    @Then("^I will set \"([^\"]*)\" request URL$")
+    public void i_will_set_request_URL(String expectedRequestType) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        RequestType parsRequestType = RequestType.valueOf(expectedRequestType);
+        switch(parsRequestType){
+            case GET:
+                response = RestAssured.get(requestBuilder.toString());
+            case POST:
+                response = RestAssured.post(requestBuilder.toString());
+            default:
+                throw new PendingException();
+        }
     }
 
     @Then("^I will validate status code is \"([^\"]*)\"$")
     public void i_will_validate_status_code_is(String statusCode) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        if(!(String.valueOf(response.getStatusCode())==statusCode))
+        if(!(String.valueOf(response.getStatusCode()) == statusCode))
             throw new PendingException();
     }
 
