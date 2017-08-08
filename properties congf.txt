@@ -1,0 +1,22 @@
+propertiesy:
+
+
+config zrobic
+
+i flowconfig
+
+property odczytac 
+przekazac do konstruktora w configu
+
+i potem albo za po mocoaa interfejsu albo za pomoca pól incstacjowych
+
+getProperty
+getMandatoryField / optional / conditional / zaimplementowac - niech rozszerza
+
+getDefaultValueOfField 
+
+contains xPath with value
+contains JsonPath with value
+
+application type - json/ txt xml
+content-length
