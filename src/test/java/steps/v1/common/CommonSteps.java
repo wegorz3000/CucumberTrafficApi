@@ -7,22 +7,35 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.testng.Assert;
 
+
+import org.testng.Assert;
+import org.w3c.dom.Document;
+
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpression;
+import javax.xml.xpath.XPathFactory;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
+import java.util.StringJoiner;
+
+import static com.jayway.restassured.RestAssured.given;
 
 public class CommonSteps extends BaseClass {
 
-//    String str = System.getProperty("PROPERTIES_PATH");
+    //    String str = System.getProperty("PROPERTIES_PATH");
 //    try{
 //        Properties props = new Properties(str);
 //    } catch(FileNotFoundException e){
 //        LOG.error('file wa snot foound');
 //        throw new FrameworkExceptions(ExceptionType.CONFIG_ERROR, e.getMessage());
 //    }
-
-    StringBuilder requestBuilder = new StringBuilder("");
+    RestAssured restAssured = new RestAssured();
+    public StringBuilder requestBuilder = new StringBuilder("");
 
     public Response response;
     HashMap<String, String> headers = new HashMap<>();
@@ -30,57 +43,64 @@ public class CommonSteps extends BaseClass {
     @Given("^I will set request body from template$")
     public void i_will_set_body_request_URL() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-           RestAssured.baseURI = baseUrl; //normal will be taken from properties
-           RestAssured.basePath = path;
+        restAssured.baseURI = baseUrl; //normal will be taken from properties
+        restAssured.basePath = path;
 
         requestBuilder.append(type + returnType);
         requestBuilder.append(z + "/" + x + "/" + y);
     }
 
-
-//    @And("^I set query parameter is \"([^\"]*)\" and have value \"([^\"]*)\"$")
-//    public void i_set_query_parameter(String queryParameterName, String queryParameterValue) throws Throwable {
-//        // Write code here that turns the phrase above into concrete actions
-//        requestBuilder.append("?" + queryParameterName + "=" + queryParameterValue);
-//    }
-
     @And("^I set query parameter is \"([^\"]*)\" and have value \"([^\"]*)\"$")
     public void i_set_query_parameter(String queryParameterName, String queryParameterValue) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        requestBuilder.append("?"+queryParameterName+"="+queryParameterValue+"&app_code=F5LQw-YKN02C00SQ3y2TFg");
-// TODO - zle napisane
+        requestBuilder.append("?" + queryParameterName + "=" + queryParameterValue);
     }
 
 
-    @When("^I set query parameters: (.*)$")
-    public void i_set_query_parameters(List<String> queryParameterList) throws Throwable {
+    @When("^I set query parameters:$")
+    public void i_set_query_parameters(Map<String, String> queryParametersMap) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         requestBuilder.append("?");
-        for (String parameter : queryParameterList) {
-            requestBuilder.append(parameter + "&");
+        StringJoiner stringJoiner = new StringJoiner("&");
+        for (String keyParameter : queryParametersMap.keySet()) {
+            stringJoiner.add(keyParameter + "=" + queryParametersMap.get(keyParameter));
+            requestBuilder.append(keyParameter + "=" + queryParametersMap.get(keyParameter) + "&");
         }
-        //TODO w tablicy?
-
     }
 
-    @And("^I will add request headers$")
-    public void i_will_add_request_headers() throws Throwable {
+    @And("^I will add request headers:$")
+    public void i_will_add_request_headers(Map<String, String> headersMap) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        RestAssured.given().headers(headers);
-        //TODO - headers - Where are their place? in properties or not?
+        given().headers(headersMap);
     }
 
-
-    @And("^I will set \"([^\"]*)\" request URL$")
+    @And("^I will set \"([^\"]*)\" request$")
     public void i_will_set_request_URL(String expectedRequestType) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        RequestType parsRequestType = RequestType.valueOf(expectedRequestType);
+
+        switch (parsRequestType) {
+            case GET:
+                response = given().log().all().get(requestBuilder.toString());
+                break;
+            case POST:
+                response = RestAssured.post(requestBuilder.toString());
+                break;
+            default:
+                throw new PendingException();
+        }
+    }
+
+    @When("^I will set \"([^\"]*)\" request with \"([^\"]*)\"$")
+    public void i_will_set_request_with(String expectedRequestType, String urlAddress) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         RequestType parsRequestType = RequestType.valueOf(expectedRequestType);
         switch (parsRequestType) {
             case GET:
-                response = RestAssured.get(requestBuilder.toString());
+                response = restAssured.given().log().all().get(urlAddress);
                 break;
             case POST:
-                response = RestAssured.post(requestBuilder.toString());
+                response = restAssured.given().post(urlAddress);
                 break;
             default:
                 throw new PendingException();
@@ -104,15 +124,15 @@ public class CommonSteps extends BaseClass {
     @Then("^I will validate body contains \"([^\"]*)\"$")
     public void i_will_validate_body_contains(String word) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        String responseBody = response.body().print();
+        String responseBody = String.valueOf(response.body());
         Assert.assertTrue(responseBody.contains(word));
-        throw new PendingException();
     }
 
     @Then("^I will validate body not contains \"([^\"]*)\"$")
     public void i_will_validate_body_not_contains(String word) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        String bodyResponse = response.body().print();
+        String bodyResponse = String.valueOf(response.body());
+        response.print();
         Assert.assertFalse(bodyResponse.contains(word));
     }
 
@@ -121,6 +141,20 @@ public class CommonSteps extends BaseClass {
         // Write code here that turns the phrase above into concrete actions
         String headerResponse = response.getHeaders().toString();
         Assert.assertTrue(headerResponse.contains(responseHeader));
+    }
+
+    @Then("^Body contains xPath \"([^\"]*)\" with value \"([^\"]*)\"$")
+    public void body_contains_xPath_with_value(String xPathExpression, String arg2) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(requestBuilder.toString());
+
+        XPathFactory xPathfactory = XPathFactory.newInstance();
+        XPath xpath = xPathfactory.newXPath();
+        XPathExpression expr = xpath.compile(xPathExpression);
+        Assert.assertEquals(arg2,expr);
+        expr.evaluate(doc, XPathConstants.STRING);
     }
 
     public enum RequestType {

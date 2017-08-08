@@ -10,8 +10,8 @@ public class BaseClass {
     String returnType = "/xml/";
     String appId = "99DtaMYpnxA9pNcmsnbj";
     String appCode = "F5LQw-YKN02C00SQ3y2TFg";
-    String x = "8";
-    String y = "134";
-    String z = "86";
+    String x = "36058";
+    String y = "21309";
+    String z = "16";
 
 }
