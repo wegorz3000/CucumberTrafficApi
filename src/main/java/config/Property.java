@@ -14,6 +14,13 @@ public class Property {
         this.conditional = conditional;
         this.optional = optional;
     }
+    public Property(String name){
+        this.name = name;
+        this.defaultValue = "";
+        this.mandatory = true;
+        this.conditional = false;
+        this.optional = false;
+    }
 
     public String getName() {
         return name;

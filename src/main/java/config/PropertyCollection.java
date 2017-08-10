@@ -13,10 +13,17 @@ public class PropertyCollection {
         this.pathPropertyFile = pathPropertyFile;
     }
 
+
     public PropertyCollection(){};
 
     public void addProperty(Property property) {
         propertyCollection.add(property);
+    }
+
+    public void addPropoerties(List<Property> properites){
+        for (Property prop : properites){
+            propertyCollection.add(prop);
+        }
     }
 
     public Property getProperty(String name) {
