@@ -1,6 +1,10 @@
 package config;
 
-import java.io.*;
+import org.apache.commons.io.IOUtils;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -14,12 +18,13 @@ public class FlowProperties {
         FlowProperties flowProperties = new FlowProperties();
         //  System.out.println(flowProperties.readingPropertyFile(propertiesFileName, "incidents").getProperty("incidents.v1.z").getDefaultValue());
         //PropertyCollection tilesCollection = flowProperties.readingPropertyFile(propertiesFileName, "tiles");
-        try {
-            System.out.println(flowProperties.readingPropertyFile(propertiesFileName, "flow").getProperty("flow.v1.x").getName());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(flowProperties.readingPropertyFileTwo(flowProperties.readingPropertyFileWithMultiParameters(propertiesFileName),"flow").getProperty("flow.v1.x").getDefaultValue());
+//        try {
+//            System.out.println(flowProperties.readingPropertyFile(propertiesFileName, "flow").getProperty("flow.v1.x").getName());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        System.out.println("dupa " + flowProperties.convertPropertiesToString(propertiesFileName));
+        System.out.println(flowProperties.readingPropertyFileTwo(flowProperties.readingPropertyFileWithMultiParameters(propertiesFileName), "flow").getProperty("flow.v1.x").getDefaultValue());
     }
 
     public PropertyCollection readingPropertyFile(String propertiesFileName, String patternName) throws IOException {
@@ -35,17 +40,18 @@ public class FlowProperties {
         return collection;
     }
 
-    public Map<String, List<String>> readingPropertyFileWithMultiParameters(String propertiesFileName) throws FileNotFoundException {
+    public Map<String, List<String>> readingPropertyFileWithMultiParameters(String propertiesFileName) {
         Map<String, List<String>> parametersMap = new HashMap<>();
-//todo oddzielenie przy =
+        //todo oddzielenie przy =
         //todo zrobienie dla tiles/flow/incidents osobnych
         //todo zrobienie z propertiesow a nie z pliku txt
-        String content = null;
+        String content = "";
         try {
             content = new String(Files.readAllBytes(Paths.get("C:\\Users\\int_miwg\\Desktop\\test.txt")));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        //System.out.println(content);
         String[] lines = content.split("\\r?\\n"); // split on new lines
         for (int i = 0; i < lines.length; i++) {
             List tempListParametersValue = new LinkedList();
@@ -60,7 +66,8 @@ public class FlowProperties {
         }
         return parametersMap;
     }
-    public PropertyCollection readingPropertyFileTwo(Map<String,List<String>> propertiesMap, String patternName) throws IOException {
+
+    public PropertyCollection readingPropertyFileTwo(Map<String, List<String>> propertiesMap, String patternName) throws IOException {
 
         PropertyCollection collection = new PropertyCollection();
         for (String propertyName : propertiesMap.keySet()) {
@@ -70,6 +77,17 @@ public class FlowProperties {
             }
         }
         return collection;
+    }
+
+    public String convertPropertiesToString(String propertiesFileName) {
+        String result = "";
+        try {
+            FileInputStream inputStream = new FileInputStream(propertiesFileName);
+            result = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }
